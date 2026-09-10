@@ -34,22 +34,6 @@ This POC deliberately isolates **one** piece of a larger email-fraud-detection c
 - ✅ Interactive map visualization (Leaflet + OpenStreetMap) of the geolocated origin
 - ✅ Clean React/TypeScript dashboard: authentication badges, red-flag alerts, relay chain, map
 
-## Architecture
-
-```
-┌─────────────────┐       multipart/form-data        ┌──────────────────┐
-│  React + TS UI   │ ───────── POST /analyze-email ──▶│  FastAPI backend  │
-│  (Vite, shadcn,  │                                    │                  │
-│   Leaflet map)   │ ◀──────────── JSON result ───────  │  email_forensics │
-└─────────────────┘                                    │  .py (parsing)   │
-                                                          │  geolocation.py  │
-                                                          │  (ip-api.com)    │
-                                                          └──────────────────┘
-
-  PostgreSQL (Docker) is provisioned but NOT yet wired up — see
-  "Not Yet Implemented" below. Currently stateless: nothing is persisted.
-```
-
 ## Tech Stack
 
 | Layer | Tech |
